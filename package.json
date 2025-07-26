@@ -1,0 +1,79 @@
+{
+  "name": "irl-pro-location-overlay",
+  "version": "1.6.0",
+  "description": "IRL Pro Location Overlay for Live Streaming - CLI Console Application",
+  "main": "cli.js",
+  "scripts": {
+    "start": "node cli.js",
+    "dev": "nodemon server.js",
+    "server": "node server.js",
+    "cli": "node cli.js",
+    "clean": "rmdir /s /q dist 2>nul || rm -rf dist 2>/dev/null || true",
+    "prebuild": "npm run clean",
+    "build": "npm run build-win",
+    "build-win": "pkg cli.js --targets node18-win-x64 --output dist/irl-overlay-windows.exe && xcopy public dist\\public\\ /E /I /Y && copy server.js dist\\ && copy embedded-server.js dist\\ && copy LICENSE dist\\ && copy README.md dist\\",
+    "build-linux": "pkg cli.js --targets node18-linux-x64 --output dist/irl-overlay-linux-x64 && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-linux-arm": "pkg cli.js --targets node18-linux-arm64 --output dist/irl-overlay-linux-arm64 && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-macos": "pkg cli.js --targets node18-macos-x64 --output dist/irl-overlay-macos-intel && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-macos-arm": "pkg cli.js --targets node18-macos-arm64 --output dist/irl-overlay-macos-m1 && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-all": "concurrently \"npm run build-win\" \"npm run build-linux\" \"npm run build-linux-arm\" \"npm run build-macos\" \"npm run build-macos-arm\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "localtunnel": "^2.0.2",
+    "socket.io": "^4.7.2",
+    "inquirer": "^8.2.6",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "pkg": "^5.8.1",
+    "concurrently": "^7.6.0"
+  },
+  "keywords": [
+    "overlay",
+    "location",
+    "streaming",
+    "irl-pro",
+    "cli",
+    "nodejs",
+    "gps",
+    "weather",
+    "console",
+    "localtunnel"
+  ],
+  "author": "abdulkadirozyurt",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdulkadirozyurt/irl-pro-location-overlay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abdulkadirozyurt/irl-pro-location-overlay/issues"
+  },
+  "homepage": "https://github.com/abdulkadirozyurt/irl-pro-location-overlay#readme",
+  "pkg": {
+    "assets": [
+      "public/**/*",
+      "src/**/*",
+      "embedded-server.js",
+      "server.js",
+      "LICENSE",
+      "README.md"
+    ],
+    "scripts": [
+      "embedded-server.js",
+      "server.js"
+    ],
+    "outputPath": "dist",
+    "targets": [
+      "node18-win-x64",
+      "node18-linux-x64", 
+      "node18-linux-arm64",
+      "node18-macos-x64",
+      "node18-macos-arm64"
+    ]
+  }
+}

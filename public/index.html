@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IRL Pro Location Overlay</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="obs-container hidden" id="obsContainer">
+      <!-- Location -->
+      <div class="info-item">
+        <div class="icon location-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="text" id="location">Yükleniyor...</div>
+      </div>
+
+      <!-- Weather -->
+      <div class="info-item">
+        <div class="weather-icon" id="weatherIcon"><div class="loading-dot"></div></div>
+        <div class="temp-display" id="weather">
+          <span class="temp-primary">--°</span>
+          <span class="temp-secondary">--°</span>
+        </div>
+      </div>
+
+      <!-- Time -->
+      <div class="info-item">
+        <div class="icon time-icon"><i class="fas fa-clock"></i></div>
+        <div class="text time-text" id="time">--:--</div>
+      </div>
+
+      <!-- Speed -->
+      <div class="info-item speed-item" id="speedContainer">
+        <div class="icon speed-icon"><i class="fas fa-tachometer-alt"></i></div>
+        <div class="text" id="speedText"><span class="speed-badge">0 km/h</span></div>
+      </div>
+    </div>
+
+    <!-- Load modules in correct order -->
+    <script src="js/modules/dev-mode.js"></script>
+    <script src="js/modules/config.js"></script>
+    <script src="js/modules/utils.js"></script>
+    <script src="js/modules/api-services.js"></script>
+    <script src="js/modules/ui-manager.js"></script>
+    <script src="js/modules/location-manager.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
