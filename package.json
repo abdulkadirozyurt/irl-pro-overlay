@@ -11,11 +11,11 @@
     "clean": "rmdir /s /q dist 2>nul || rm -rf dist 2>/dev/null || true",
     "prebuild": "npm run clean",
     "build": "npm run build-win",
-    "build-win": "pkg cli.js --targets node18-win-x64 --output dist/irl-overlay-windows.exe && xcopy public dist\\public\\ /E /I /Y && copy server.js dist\\ && copy embedded-server.js dist\\ && copy LICENSE dist\\ && copy README.md dist\\",
-    "build-linux": "pkg cli.js --targets node18-linux-x64 --output dist/irl-overlay-linux-x64 && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
-    "build-linux-arm": "pkg cli.js --targets node18-linux-arm64 --output dist/irl-overlay-linux-arm64 && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
-    "build-macos": "pkg cli.js --targets node18-macos-x64 --output dist/irl-overlay-macos-intel && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
-    "build-macos-arm": "pkg cli.js --targets node18-macos-arm64 --output dist/irl-overlay-macos-m1 && cp -r public dist/ && cp server.js dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-win": "pkg cli.js --targets node18-win-x64 --output dist/irl-overlay-windows.exe && xcopy public dist\\public\\ /E /I /Y && copy embedded-server.js dist\\ && copy LICENSE dist\\ && copy README.md dist\\",
+    "build-linux": "pkg cli.js --targets node18-linux-x64 --output dist/irl-overlay-linux-x64 && cp -r public dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-linux-arm": "pkg cli.js --targets node18-linux-arm64 --output dist/irl-overlay-linux-arm64 && cp -r public dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-macos": "pkg cli.js --targets node18-macos-x64 --output dist/irl-overlay-macos-intel && cp -r public dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
+    "build-macos-arm": "pkg cli.js --targets node18-macos-arm64 --output dist/irl-overlay-macos-m1 && cp -r public dist/ && cp embedded-server.js dist/ && cp LICENSE dist/ && cp README.md dist/",
     "build-all": "concurrently \"npm run build-win\" \"npm run build-linux\" \"npm run build-linux-arm\" \"npm run build-macos\" \"npm run build-macos-arm\""
   },
   "dependencies": {
@@ -59,13 +59,11 @@
       "public/**/*",
       "src/**/*",
       "embedded-server.js",
-      "server.js",
       "LICENSE",
       "README.md"
     ],
     "scripts": [
-      "embedded-server.js",
-      "server.js"
+      "embedded-server.js"
     ],
     "outputPath": "dist",
     "targets": [
